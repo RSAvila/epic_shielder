@@ -19,11 +19,19 @@ class userCreator:
                     break
             
             usuarios.write(nome)
+            usuarios.write('\n')
             usuarios.write(senha)
+            #print(usuarios.readlines())
 
 class userDelete:
-    with open('UserList.txt', 'w') as usuarios:
-        usuarios.write('')
+    def __init__(self):
+        with open('UserList.txt', 'w') as usuarios:
+            usuarios.write('')
+
+class viewAllUsers:
+    def __init__(self):
+        with open('UserList.txt', 'r') as usuarios:
+            print(usuarios.read())
 
 #class Identificacao:
 #    def __init__(self):
@@ -38,10 +46,34 @@ class userDelete:
 
 class Pasta:
     def __init__(self):
-
         caminho = input("Usuario digite o caminho: ")
         print(caminho)
 
-pessoa1 = userCreator()
+
+class Exec:
+    def __init__(self):
+        while True:
+            print("[1] Criar Usuario\n[2] Deleta TODOS os Usuarios\n[3] Ver todos os Usuarios\n[4] Abrir uma pasta")
+            pergunta = input("Digite o numero da ação que vc deseja realizar: ")
+            if pergunta == "1":
+                acao = userCreator()
+                break
+            elif pergunta == "2":
+                acao = userDelete()
+                break
+            elif pergunta == "3":
+                acao = viewAllUsers()
+                break
+            elif pergunta == "4":
+                acao = Pasta()
+            else:
+                print("Você não escolheu um numero de ação valido!\n\n\n")
+
+
+
+executar = Exec()
+
+
+#pessoa1 = userCreator()
 
 #Pasta()
